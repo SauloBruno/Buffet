@@ -18,5 +18,7 @@ namespace Buffet.ViewModels.Home
         //classes simples com dados extremamente simples como string e inteiros 
         public string Nome { get; set; }
         public string DataDeNascimento { get; set; }
+
+        public int Idade { get; set; }
     }
 }
