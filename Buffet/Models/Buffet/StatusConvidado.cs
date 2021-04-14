@@ -6,6 +6,5 @@ namespace Buffet.Models.Buffet
     {
         public int Id { get; set; }
         public String Descricao { get; set; }
-        
     }
 }

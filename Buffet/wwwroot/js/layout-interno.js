@@ -1,3 +1,0 @@
-﻿/**
- * Scripts - Layout Interno
- */

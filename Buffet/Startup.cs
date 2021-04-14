@@ -2,13 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Buffet.Data;
-using Buffet.Models.Acesso;
-using Buffet.Models.Buffet.Cliente;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,24 +24,17 @@ namespace Buffet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            services.AddDbContext<DatabaseContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("BuffetDb"))
-            );
-
-            //configurara o controle de acesso do usuario
-            services.AddIdentity<Usuario, Papel>()
-                .AddEntityFrameworkStores<DatabaseContext>();
-
-            services.AddTransient<ClienteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment()) {
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            } else {
+            }
+            else
+            {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -56,15 +45,13 @@ namespace Buffet
 
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Acesso}/{action=Login}/{param?}"
-                );
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
