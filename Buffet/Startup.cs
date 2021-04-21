@@ -33,11 +33,29 @@ namespace Buffet
                 options.UseMySql(Configuration.GetConnectionString("BuffetDb"))
             );
 
-            //configurara o controle de acesso do usuario
-            services.AddIdentity<Usuario, Papel>()
-                .AddEntityFrameworkStores<DatabaseContext>();
+            //configurar o controle de acesso do usuario
+            //Informar a aplicação queremos usar o indentity
+            //é mecessario informar para aplicação onde ele vai buscar/armazenar os dados do usuario 
+            //options são usados para configurar as nuancias do login do usuario, tbm serve para determinar
+            //as exigencias nedessarias para o cadastro de um usuario
+            services.AddIdentity<Usuario, Papel>(options =>
+            {
+                
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
 
+            }).AddEntityFrameworkStores<DatabaseContext>();
+
+            //ajustar cofigurações a nivel de cokie e session
+            services.ConfigureApplicationCookie(options =>
+            {
+                //loginPath serve para definir onde os usuarios que não tem autorização para acessar uma
+                //pagina vão cair 
+                options.LoginPath = "/Acesso/Login";
+            });
+            
             services.AddTransient<ClienteService>();
+            services.AddTransient<AcessoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

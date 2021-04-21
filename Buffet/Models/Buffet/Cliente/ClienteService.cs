@@ -63,7 +63,7 @@ namespace Buffet.Models.Buffet.Cliente
             */
             
             // ENTIDADES RELACIONADAS
-            var cliente = _databaseContext.Clientes
+            /*var cliente = _databaseContext.Clientes
                 .Include(c => c.Eventos)
                 .ToList()
                 .Single(c => c.Id.ToString()
@@ -75,7 +75,7 @@ namespace Buffet.Models.Buffet.Cliente
                 Console.Write(" :: " + cliente.Nome);
                 Console.Write(" :: " + cliente.Email);
                 Console.Write(" :: " + cliente.Eventos.Count);
-            }
+            }*/
             
             //return cliente;
             //return _databaseContext.Clientes.ToList();

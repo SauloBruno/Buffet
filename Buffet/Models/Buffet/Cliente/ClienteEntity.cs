@@ -7,16 +7,14 @@ namespace Buffet.Models.Buffet.Cliente
 {
     public class ClienteEntity
     {
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        
-        public ICollection<EventoEntity> Eventos { get; set; }
+        public int Id { get; set; }
 
-        public ClienteEntity()
+        public string Descricao { get; set; }
+
+        public ClienteEntity(int id, string descricao)
         {
-            Id = new Guid();
-            Eventos = new List<EventoEntity>();
+            Id = id;
+            Descricao = descricao;
         }
     }
 }

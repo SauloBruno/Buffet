@@ -5,13 +5,13 @@ namespace Buffet.Models.Buffet.Evento
 {
     public class EventoEntity
     {
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public ClienteEntity Cliente { get; set; }
+        public int Id { get; set; }
+        public string Descricao { get; set; }
 
-        public EventoEntity()
+        public EventoEntity(int id, string descricao)
         {
-            Id = new Guid();
+            Id = id;
+            Descricao = descricao;
         }
     }
 }

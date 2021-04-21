@@ -6,7 +6,7 @@ namespace Buffet.Models.Acesso
     public class Usuario : IdentityUser<Guid>
     {
 
-        //public String Type { get; set; }
+        //public String Apelido { get; set; }
         
     }
 }

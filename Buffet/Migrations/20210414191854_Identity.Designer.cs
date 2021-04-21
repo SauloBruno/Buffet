@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Buffet.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210410003018_Indentity")]
-    partial class Indentity
+    [Migration("20210414191854_Identity")]
+    partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

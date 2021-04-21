@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Buffet.Controllers.Admin
 {
+    //bloqueio de controller para usuarios não autorizados, metodo natural do asp.net
+    //so podem acessar usuarios com a devida autorização
     [Authorize]
     public class AdminController : Controller
     {
